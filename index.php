@@ -40,12 +40,12 @@ if ($resultado = mysqli_query($enlace, $consulta)) {
         <meta charset="utf-8">
         <!---Carga de la hoja de estilos Bootstrap-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">        
-        <title>Calculadora de envios PoBox</title>
+        <title>Calculadora de Envíos PoBox</title>
     </head>
     <body>
         <div class="container row">
             <div class="col-md-4 col-md-offset-4">
-                <h1 class="text-center">Calculadora de envios</h1>
+                <h1 class="text-center">Calculadora de Envíos</h1>
                 <form>
                     <div class="form-group">
                         <label for="productos">Tipo de mercancía</label>
@@ -102,28 +102,29 @@ foreach ($productos as $producto)
                         <thead>
                             <tr>
                                 <th>Concepto</th>
-                                <th>valor (Pesos)</th>
+                                <th class="text-right">Valor (Pesos Colombianos)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Valor del flete: </td>
-                                <td id="valor_flete_pesos" class="text-right"></td>
-                            </tr>
-                            <tr>
                                 <td>Valor de la mercancía: </td>
                                 <td id="valor_mercancia_pesos" class="text-right"></td>
+                            </tr>                            
+                            <tr>
+                                <td>Valor del flete: </td>
+                                <td id="valor_flete_pesos" class="text-right"></td>
                             </tr>
                             <tr>
                                 <td>Valor de los impuestos: </td>
                                 <td id="valor_impuestos_pesos" class="text-right"></td>
                             </tr>
                             <tr class="active">
-                                <td>Valor total: </td>
+                                <td>Valor total*: </td>
                                 <td id="valor_total_pesos" class="text-right"></td>
                             </tr>                            
                         </tbody>
-                    </table>                   
+                    </table>
+                    <p>*Importante: Por favor tenga en cuenta que éste valor es aproximado y puede variar según los datos reales del envío y el plan que tenga con nosotros.</p>
                 </div>
             </div>
         </div>
