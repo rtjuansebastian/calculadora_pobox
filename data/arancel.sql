@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
+-- version 4.0.10.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jan 17, 2017 at 04:02 PM
--- Server version: 10.0.28-MariaDB-0ubuntu0.16.04.1
--- PHP Version: 7.0.13-0ubuntu0.16.04.1
+-- Host: localhost:3306
+-- Generation Time: Feb 21, 2017 at 02:49 PM
+-- Server version: 5.5.52-cll-lve
+-- PHP Version: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `arancel`
@@ -26,84 +26,62 @@ SET time_zone = "+00:00";
 -- Table structure for table `productos`
 --
 
-CREATE TABLE `productos` (
-  `id` int(11) NOT NULL,
-  `categoria` varchar(200) NOT NULL,
+CREATE TABLE IF NOT EXISTS `productos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `categoria` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `gravamen` double NOT NULL,
-  `iva` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `iva` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=43 ;
 
 --
 -- Dumping data for table `productos`
 --
 
 INSERT INTO `productos` (`id`, `categoria`, `gravamen`, `iva`) VALUES
-(1, 'Accesorios y partes para automóviles', 10, 16),
-(2, 'Accesorios y partes para bicicletas', 10, 16),
-(3, 'Accesorios y partes para motocicletas', 10, 16),
-(4, 'Aparatos de diagnostico', 0, 16),
-(5, 'Artículos de oficina', 10, 16),
-(6, 'Artículos deportivos', 10, 16),
-(7, 'Artículos ortopedicos', 5, 0),
-(8, 'Articulos para bebé', 10, 16),
-(9, 'Bisuteria', 0, 16),
-(10, 'CD ROM', 5, 16),
-(11, 'CDs , DVDs', 10, 16),
-(12, 'Computación - Hardware', 5, 16),
-(13, 'Computación - Software', 10, 16),
-(14, 'Computadores', 0, 0),
-(15, 'Computadores - Accesorios', 5, 16),
-(16, 'Computadores - Monitores', 5, 16),
-(17, 'Decoración y diseno', 10, 16),
-(18, 'Dispositivos para almacenar datos (USB)', 0, 16),
-(19, 'Documentos y revistas', 0, 0),
-(20, 'Electrónicos - Accesorios y partes', 5, 16),
-(21, 'Electrónicos - Agendas y PDAs', 0, 16),
-(22, 'Electrónicos - Cámaras de video', 5, 16),
-(23, 'Electrónicos - Cámaras digitales', 5, 16),
-(24, 'Electrónicos - Circuitos integrados, procesadores y controladores', 0, 16),
-(25, 'Electronicos - Equipos de audio , video', 5, 16),
-(26, 'Electrónicos - Juegos de video', 10, 16),
-(27, 'Electrónicos - Reproductores iPod, mp3, mp4, mp5', 5, 16),
-(28, 'Electrónicos - Tablets', 5, 16),
-(29, 'Electrónicos - Televisores', 10, 16),
-(30, 'Equipos y partes para comunicaciones', 0, 16),
-(31, 'Equipos y partes para impresión', 0, 16),
-(32, 'Herramientas y ferretería', 10, 16),
-(33, 'Hogar y jardín', 10, 16),
-(34, 'Instrumentos musicales', 5, 16),
-(35, 'Instrumentos y aparatos para análisis físico y químico', 0, 16),
-(36, 'Joyas y relojes', 10, 16),
-(37, 'Juguetes, juegos y hobbies', 10, 16),
-(38, 'Libros', 0, 0),
-(39, 'Menaje', 10, 16),
-(40, 'Micrófonos, auriculares y sus partes', 0, 16),
-(41, 'Otros envios urgentes', 10, 16),
-(42, 'Ropa', 10, 16),
-(43, 'Teléfonos celulares', 0, 16),
-(44, 'Telescopios', 0, 16),
-(45, 'Vitaminas', 0, 0),
-(46, 'Zapatos', 10, 16);
+(1, 'Accesorios y partes para automoviles', 10, 19),
+(2, 'Accesorios y partes para bicicletas', 10, 19),
+(3, 'Accesorios y partes para motocicletas', 10, 19),
+(4, 'Aparatos de diagnostico', 0, 19),
+(5, 'Articulos de oficina', 10, 16),
+(6, 'Articulos deportivos', 10, 16),
+(7, 'Articulos ortopedicos', 5, 0),
+(8, 'Articulos para bebe', 10, 19),
+(9, 'CDs , DVDs', 10, 19),
+(10, 'Celulares', 0, 19),
+(11, 'Computacion - Hardware', 5, 19),
+(12, 'Computacion - Software', 10, 19),
+(13, 'Computadores', 0, 0),
+(14, 'Computadores - Accesorios', 5, 19),
+(15, 'Decoracion y diseno', 10, 19),
+(16, 'Documentos y revistas', 0, 0),
+(17, 'Electronicos - Repuestos', 0, 19),
+(18, 'Electronicos - Agendas y PDAs', 0, 19),
+(19, 'Electronicos - Camaras de video', 5, 19),
+(20, 'Electronicos - Camaras digitales', 5, 19),
+(21, 'Electronicos - Circuitos integrados, procesadores y controladores', 0, 19),
+(22, 'Electronicos - Equipos de audio , video,  reproductores iPod, mp3, mp4, mp5', 5, 19),
+(23, 'Electronicos - Juegos de video', 10, 19),
+(24, 'Electronicos - Tablets', 5, 19),
+(25, 'Electronicos - Televisores', 10, 19),
+(26, 'Impresora', 0, 19),
+(27, 'Partes y accesorios para Impresion', 0, 19),
+(28, 'Herramientas y ferreteria', 10, 19),
+(29, 'Hogar y jardin', 10, 19),
+(30, 'Instrumentos musicales (Guitarras)', 5, 19),
+(31, 'Joyas ', 10, 19),
+(32, 'Relojes', 5, 19),
+(33, 'Juguetes, juegos y hobbies', 10, 19),
+(34, 'Libros', 0, 0),
+(35, 'Menaje', 10, 19),
+(36, 'Microfonos, auriculares y sus partes', 0, 19),
+(37, 'Otros envios urgentes', 10, 19),
+(38, 'Ropa', 10, 19),
+(39, 'Telescopios', 0, 19),
+(40, 'Vitaminas', 0, 0),
+(41, 'Zapatos', 10, 19),
+(42, 'Lentes de contacto', 0, 0);
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `productos`
---
-ALTER TABLE `productos`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `productos`
---
-ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

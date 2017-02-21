@@ -54,7 +54,7 @@ if ($resultado = mysqli_query($enlace, $consulta)) {
 foreach ($productos as $producto)
 {
 ?>
-                            <option value="<?=$producto['id']?>" data-gravamen="<?=$producto['gravamen']?>" data-iva="<?=$producto['iva']?>"><?=$producto['categoria']?></option>
+                            <option value="<?=$producto['id']?>" data-id="<?=$producto['id']?>" data-gravamen="<?=$producto['gravamen']?>" data-iva="<?=$producto['iva']?>"><?=$producto['categoria']?></option>
 <?php
 }
 ?>
@@ -149,6 +149,7 @@ foreach ($productos as $producto)
             var diferencia=0;
             var valor_flete=0;
             var valor_impuestos=0;
+            var id=0;
             var gravamen=0;
             var iva=0;            
             $("#check_dimensiones").click(function () {                
@@ -164,7 +165,8 @@ foreach ($productos as $producto)
                 var seleccionado = $("#productos").find('option:selected');
                 gravamen=seleccionado.data('gravamen');
                 iva=seleccionado.data('iva');  
-                console.log("gravamen: "+gravamen);
+                id=seleccionado.data('id');  
+                console.log(id);
                 valor=parseFloat($('#valor_mercancia').val());
                 if(valor<=2000)
                 {
@@ -242,20 +244,39 @@ foreach ($productos as $producto)
                     }
                     var valor_flete_pesos=rendondeo_centenas(valor_flete*tasa_cambio);
                     var valor_mercancia_pesos=rendondeo_centenas(valor*tasa_cambio);
-                    if(valor>200)
+                    if(id===20)
                     {
+                        console.log('es una camara');
                         valor_impuestos=rendondeo_centenas(valor_mercancia_pesos*((gravamen+iva)/100));
+                    }
+                    else if(id===13)
+                    {              
+                        console.log('es un computador');
+                        if(valor_mercancia_pesos>1592950)
+                        {
+                            valor_impuestos=rendondeo_centenas(valor_mercancia_pesos*(19/100));
+                        }
+                        else
+                        {
+                            valor_impuestos=rendondeo_centenas(valor_mercancia_pesos*(gravamen/100));
+                        }                                                 
                     }
                     else
                     {
-                        valor_impuestos=rendondeo_centenas(valor_mercancia_pesos*(gravamen/100));
-                    }                
+                        if(valor>200)
+                        {
+                            valor_impuestos=rendondeo_centenas(valor_mercancia_pesos*((gravamen+iva)/100));
+                        }
+                        else
+                        {
+                            valor_impuestos=rendondeo_centenas(valor_mercancia_pesos*(gravamen/100));
+                        }                         
+                    }               
                     var valor_total_pesos=valor_flete_pesos+valor_mercancia_pesos+valor_impuestos;
                     $('#valor_flete_pesos').html("$" + currency(valor_flete_pesos,0,[',', "'", '.']));
                     $('#valor_mercancia_pesos').html("$" + currency(valor_mercancia_pesos,0,[',', "'", '.']));
                     $('#valor_impuestos_pesos').html("$" + currency(valor_impuestos,0,[',', "'", '.']));
                     $('#valor_total_pesos').html("$" + currency(valor_total_pesos,0,[',', "'", '.']));
-                    console.log('peso fisico: '+ peso_fisico + ' peso volumetrico: '+ peso_volumetrico + ' tarifa fisica: '+ tarifa_fisica + ' tarifa volumen: '+ tarifa_volumen + ' diferencia: '+ diferencia  + ' valor flete: '+ valor_flete + ' valor mercancia: ' + valor + ' tasa de cambio: ' + tasa_cambio + ' valor mercancia pesos: '+ valor*tasa_cambio + ' valor flete pesos: '+ valor_flete*tasa_cambio  );
                 }
                 else
                 {
